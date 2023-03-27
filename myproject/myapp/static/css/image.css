@@ -1,0 +1,50 @@
+.mainContainer {
+    position: relative;
+    padding: 0;
+    min-width: 250px;
+    min-height: 250px;
+    display: inline-block;
+    margin: 0 auto;
+  }
+  
+  img {border: none; max-width: 100%;}
+  
+  #date, #venue, #description {
+    display: block;
+    padding: 10px 5px;
+  }
+  
+  #file {
+    display: none;
+    visibility: hidden;
+    width: 1px;
+  }
+  
+  #theDate, #theVenue, #theDesc {
+    position: absolute;
+    top: 150px;
+    left: 40%;
+    background: #000;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    width: auto;
+    padding: 5px;
+    text-align: left;
+    border: dashed 1px #ff7f27;
+    font: 15px Calibri;
+    display: block;
+    cursor: move;
+    font-size: xx-large;
+  }
+  
+  
+  
+  #theVenue {
+    top: 200px;
+  }
+  
+  #theDesc {
+    top: 100px;
+  }
+  
+  canvas {max-width: 100%;}

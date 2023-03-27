@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/image.css' %}">
+
+</head>
+<body>
+    <!--File upload-->
+    <p>
+        <input type="submit"  id="btChooseImage" onclick='chooseImage()' value="Select an image" />
+    </p>
+    <input type="file" id="file" onchange="showImage(this)" />
+
+    <!--Textarea to enter some texts.-->
+    <p>
+        <textarea  onkeyup='writeDesc(this)' id='description' placeholder='Enter the description' rows='2' cols='50'></textarea>
+        <input type="text" onkeyup='writeDate(this)' id='date' placeholder='Enter the date'></input>
+        <input type="text" onkeyup='writeVenue(this)' id='venue' placeholder='Enter the venue'></input>
+    </p>
+
+    <div>
+        <!--The parent container, image and container for text (to place over the image)-->
+        <div class="mainContainer" id='mainContainer'>
+            <!--The default image. You can select a different image too.-->
+            <img src="https://www.linkpicture.com/q/1_1484.jpg" id="myimage" alt="" width="500" height="700" />
+                    
+            <!--The text, which is also draggable.-->
+            <div id='theDesc' onmousedown='this.style.border = "dashed 1px #FF7F27";'>sample description</div>
+            <div id='theDate' onmousedown='this.style.border = "dashed 1px #FF7F27";'>sample date</div>
+            <div id='theVenue' onmousedown='this.style.border = "dashed 1px #FF7F27";'>sample venue</div>
+        </div>
+
+        <!--Button to save the image with the text.-->
+        <p><input type="button" onclick="saveImageWithText();" id="bt" value="Save the Image" /></p>
+        <p><a type="button" href="{% url 'home' %}">back to home page</a></p>
+        
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="{% static 'js/image.js' %}"></script>
+</body>
+</html>

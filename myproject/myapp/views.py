@@ -6,13 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 # Create your views here.
 def index(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        email = request.POST['email']
-        newuser = User.objects.create_user(username,email,password)
-        newuser.save()
-        return HttpResponseRedirect(reverse('login'))
     return render(request,'index.html')
 
 def logins(request):
@@ -22,7 +15,7 @@ def logins(request):
         whetheruser = authenticate(username = username, password = password)
         if whetheruser is not None :
             login(request,whetheruser)
-            return home(request)
+            return HttpResponseRedirect(reverse('home'))
         # else:
             # return HttpResponse('you are not in the database go register yourself first')
     return render(request,'login.html')
@@ -33,7 +26,7 @@ def home(request):
 
 @login_required
 def diwali(request):
-    return render(request,'sec.html')
+    return HttpResponseRedirect(reverse('diwali'))
 
 @login_required
 def christmas(request):
@@ -75,3 +68,13 @@ def logouti(request):
     logout(request)
     return render(request,'logout.html')
 
+def signup(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        email = request.POST['email']
+        newuser = User.objects.create_user(username,email,password)
+        newuser.save()
+        return HttpResponseRedirect(reverse('login'))
+
+    return render(request,'signup.html')
